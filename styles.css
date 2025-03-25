@@ -1,0 +1,355 @@
+/* General Page Styling */
+body {
+    font-family: 'Epilogue', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Header Styling */
+header {
+    background-color: transparent;
+    color: black;
+    padding: 30px 0;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add subtle shadow for depth */
+    background-color: #6B4BCC;
+}
+
+
+/* Navigation Bar Styling */
+.nav {
+    display: flex;
+    gap: 20px; /* Spacing between links */
+    
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s ease, border-bottom 0.3s ease; /* Smooth transitions */
+}
+
+.nav .disabled-nav {
+    cursor: not-allowed;
+} 
+.nav .disabled-nav:hover {
+    color: gray;
+}
+
+.nav a:hover {
+    color: #00ff89; /* Change text color on hover */
+}
+
+.nav a.active {
+    color: #00ff89; /* Active link color */
+    border-bottom: 2px solid #00ff89; /* Fine line under active link */
+}
+textarea {
+    width: 648px;
+    height: 150px;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 12px; /* More circular */
+    margin-bottom: 20px;
+    resize: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    overflow-y: scroll;
+    resize: none;
+}
+
+textarea:focus {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-color: #00ff89; /* New border color */
+}
+
+#timezone-main{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+#timezone, #label-timezone {
+    height:35px;
+    position: relative;
+    
+}
+
+/* Button Styling */
+/* button {
+    background-color:rgba(86, 0, 239, 1);; 
+    color: white; 
+    border: 2px solid rgba(86, 0, 239, 1);;  
+    padding: 5px 5px;
+    font-size: 16px;
+    width:160px;
+    cursor: pointer;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.4s ease, color 0.4s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+button:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background-color: rgba(86, 0, 239, 1);  
+    transition: all 0.4s ease;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: -1;
+    border-radius: 50px;
+}
+
+button:hover {
+    color: white;  
+}
+
+button:hover:before {
+    transform: translate(-50%, -50%) scale(1);  
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+
+button.clear-table, button.remove-last {
+    background-color: #ff007a;
+    color: white; 
+    border: 2px solid #ff007a;
+    border-radius: 50px;
+    padding: 12px 25px;
+}
+
+button.clear-table:before, button.remove-last:before {
+    background-color: rgba(255, 0, 122, 0.9); 
+    border: 2px solid rgba(255, 0, 122, 0.9);
+}
+
+button.clear-table:hover, button.remove-last:hover {
+    color: white;  
+}
+
+button.clear-table:hover:before, button.remove-last:hover:before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+button.clear-table:hover, button.remove-last:hover {
+    background-color: rgba(255, 0, 122, 0.8);
+}
+ */
+
+
+.table-container::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #04052e; /* Scrollbar color */
+    border-radius: 10px; /* Round the scrollbar edges */
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(86, 0, 239, 0.8); /* Darker on hover */
+}
+
+table {
+    width: 100%; /* Adjust table width to fill container */
+    border-collapse: collapse;
+    overflow-y: scroll;
+}
+
+table thead {
+    position: sticky; /* Make table header sticky */
+    top: 0;
+    background-color: #cfe2f3; /* New header background */
+    z-index: 1;
+}
+
+table th, table td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+table tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+table tr:hover {
+    background-color: rgba(207, 226, 243, 0.2); /* New hover effect */
+}
+
+
+
+table td {
+    color: #333;
+}
+
+div#buttons>button {
+    margin: 0px 5px 0px 5px;
+
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+    }
+
+    textarea {
+        height: 120px;
+        font-size: 12px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    table th, table td {
+        padding: 10px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 20px;
+    }
+
+    form {
+        padding: 10px;
+    }
+
+    textarea {
+        height: 100px;
+        font-size: 12px;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+
+    table th, table td {
+        padding: 8px 10px;
+    }
+
+    button.clear-table, button.remove-last {
+        padding: 8px 15px;
+    }
+}
+/* General Page Styling for 1920x1080 */
+@media (min-width: 1920px) and (max-width: 2560px) {
+    body {
+        font-size: 16px; /* Adjust font size */
+        padding: 40px;
+    }
+
+    header {
+        padding: 40px 0;
+    }
+
+    h2 {
+        font-size: 28px; /* Increase heading size */
+    }
+
+    .header-container {
+        max-width: 1500px;
+    }
+
+    form {
+        width: 60%; /* Adjust the width of form for large screens */
+        top: 50px;
+        padding: 30px;
+    }
+
+    textarea {
+        width: 850px; /* Widen textarea */
+        height: 200px;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 15px 30px; /* Increase button padding */
+        font-size: 18px;
+        width: 180px;
+    }
+
+    .table-container {
+        width: 40%; /* Widen the table */
+    }
+
+    table th, table td {
+        padding: 20px;
+        font-size: 16px; /* Increase table font size */
+    }
+}
+
+/* General Page Styling for 2560x1440 */
+@media (min-width: 2560px) {
+    body {
+        font-size: 18px; /* Adjust font size */
+        padding: 50px;
+    }
+
+    header {
+        padding: 50px 0;
+    }
+
+    h2 {
+        font-size: 32px; /* Increase heading size */
+    }
+
+    .header-container {
+        max-width: 1800px;
+    }
+
+    form {
+        width: 50%; /* Adjust the width of form for very large screens */
+        padding: 40px;
+    }
+
+    textarea {
+        width: 1000px; /* Widen textarea */
+        height: 250px;
+        font-size: 18px;
+    }
+
+    button {
+        padding: 20px 40px; /* Increase button padding */
+        font-size: 20px;
+        width: 200px;
+    }
+
+    .table-container {
+        width: 50%; /* Widen the table */
+    }
+
+    table th, table td {
+        padding: 25px;
+        font-size: 18px; /* Increase table font size */
+    }
+}
