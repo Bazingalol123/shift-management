@@ -5,984 +5,681 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shift Manager</title>
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="Images/android-chrome-256x256-1-150x150.png">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/f412d1e334.js" crossorigin="anonymous"></script>
-
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
-    <script src="ShiftManager.js"></script>
-    <style>
-        :root {
-            --claude-purple: rgba(0, 0, 0, 0.2);
-            --claude-background-color: rgb(241, 241, 241);
-            --claude-light-purple: #8970D4;
-            --claude-dark-purple: #04052e;
-            --claude-dark: #2D2D2D;
-            --claude-gray: #F6F6F8;
-            --claude-text: #383838;
-            --random-color:
-        }
-
-        body {
-            font-family: 'Epilogue', sans-serif;
-            background-color: var(--claude-background-color);
-            margin: 0;
-            padding: 0;
-            color: var(--claude-text);
-        }
-
-        /* Header Styling */
-        header {
-            color: black;
-            width: 100vw;
-            height: 2vh;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: whitesmoke;
-            z-index: 1002;
-            position: relative;
-            bottom: 2em;
-        }
-
-        .header-container {
-            width: 100vw;
-            max-width: 100vw;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        /* Sidebar Styling */
-        .sidebar {
-            height: 120vh;
-            width: 22rem;
-            position: fixed;
-            left: 0;
-            top: 7rem;
-            grid-column: 1;
-            background-color: white;
-            transition: 0.3s;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-        }
-
-        .sidebar.collapsed {
-            width: 60px;
-        }
-
-        .sidebar-header {
-            padding: 15px 0px 0px 0px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid var(--claude-gray);
-            transition: 0.3s ease-in;
-            height: 1rem;
-            position: relative;
-            top: 0.5rem;
-        }
-
-        .toggle-btn {
-            background: none;
-            border: none;
-            color: var(--claude-purple);
-            cursor: pointer;
-            font-size: 20px;
-            padding: 5px;
-            background-color: transparent;
-            position: relative;
-            left: 14rem;
-            box-shadow: none;
-        }
-
-
-        .toggle-btn-collapsed {
-            background: none;
-            border: none;
-            color: var(--claude-purple);
-            cursor: pointer;
-            font-size: 20px;
-            padding: 0px;
-            background-color: transparent;
-            position: relative;
-            left: 0px;
-            bottom: 0.3rem;
-            box-shadow: none;
-        }
-
-        .toggle-btn-collapsed>img {
-            rotate: 180deg;
-            position: relative;
-            top: 0.2rem;
-        }
-
-        .nav-links {
-            padding: 20px 0;
-        }
-
-        .nav-links a {
-            display: flex;
-            align-items: center;
-            padding: 15px 20px;
-            color: #270337;
-            text-decoration: none;
-            transition: 0.3s;
-            white-space: nowrap;
-        }
-
-        .nav-links a:hover {
-            background-color: var(--claude-gray);
-        }
-
-        .nav-links a.active {
-            background-color: var(--claude-dark-purple);
-            color: white;
-        }
-
-        .nav-links .icon {
-            margin-right: 15px;
-            width: 20px;
-            text-align: center;
-        }
-
-        .nav-links .link-text {
-            opacity: 1;
-            transition: 0.3s;
-            margin-left: 1rem;
-        }
-
-        .sidebar.collapsed .link-text {
-            opacity: 0;
-            display: none;
-        }
-
-
-        .search-input {
-            width: 60%;
-            padding: 10px;
-            font-size: 1rem;
-            border: 1px solid var(--claude-gray);
-            border-radius: 4px;
-        }
-
-
-        .search-container {
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        .subject.expanded {
-            max-height: 500px;
-            /* Adjust based on your content */
-            padding: 20px;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* Main Content Styling */
-        #main-content {
-            margin-left: 250px;
-            transition: 0.3s;
-            width: 60vw;
-            position: relative;
-
-            right: 5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        #main-content.collapsed {
-            position: relative;
-            right: 25rem;
-        }
-
-        /* Subject Section Styling */
-        .subject {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-        }
-
-        .subject h2 {
-            color: var(--claude-dark-purple);
-            margin-bottom: 15px;
-        }
-
-        .links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-
-
-        }
-
-        .buttons.buttons {
-            padding: 0.8rem;
-        }
-
-        .links li {
-            margin-bottom: 10px;
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
-        .links a {
-            text-decoration: none;
-            color: var(--claude-dark-purple);
-            font-weight: bold;
-            transition: color 0.3s;
-
-
-        }
-
-        .links a:hover {
-            color: var(--claude-light-purple);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1001;
-            width: 40%;
-        }
-
-        .modal-header {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--claude-dark-purple);
-        }
-
-        .modal input,
-        .modal select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid var(--claude-gray);
-            border-radius: 4px;
-        }
-
-        .modal button {
-            background-color: var(--claude-dark-purple);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-right: 5px;
-        }
-
-        .modal button:hover {
-            background-color: var(--claude-light-purple);
-        }
-
-        .modal-close {
-            background-color: red;
-            color: white;
-        }
-
-        .buttons {
-            background: none;
-            border: none;
-            height: fit-content;
-            width: auto;
-            border-radius: 3rem;
-
-            transition: all 0.3s ease-in;
-            color: rgba(0, 0, 0, 0.1);
-
-            &:hover {
-                scale: 1.1;
-                cursor: pointer;
-                color: black;
-            }
-        }
-
-        .buttons2 {
-            display: inline-block;
-            color: #04052e;
-            border: solid 1px var(--claude-dark-purple);
-            text-wrap: wrap;
-
-            display: flex;
-            justify-content: center;
-            align-self: center;
-            flex-direction: row;
-            gap: 3em;
-            background-color: rgba(4, 5, 46, 0.06);
-            align-items: center;
-            height: 3rem;
-            width: auto;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 0.9em;
-
-            &:hover {
-                scale: 1.05;
-            }
-        }
-
-        .subject-header {
-            display: flex;
-            flex-direction: row;
-            position: relative;
-            justify-content: space-between;
-        }
-
-        .subject-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-        }
-
-        .toggle-subject-btn {
-            background: none;
-            border: none;
-            color: var(--claude-dark-purple);
-            cursor: pointer;
-            font-size: 1.2rem;
-            padding: 5px;
-            transition: scale 0.2s ease-in-out;
-
-            &:hover {
-                scale: 1.1;
-            }
-        }
-
-        .subject-guides {
-            margin-top: 10px;
-        }
-
-        .main-content {
-            padding: 20px;
-        }
-
-        .table-container {
-            margin: 20px 0;
-            width: 100%;
-        }
-
-        .table-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 30px;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
-
-        th {
-            background: #04052e;
-            color: white;
-        }
-
-        td.dropzone {
-            background: #f9f9f9;
-            min-height: 50px;
-        }
-
-        td.dropzone.over {
-            background: #d3f9d8;
-        }
-
-        .employee-tag {
-            display: inline-block;
-            background: #8970d4;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin: 2px;
-            cursor: grab;
-        }
-
-        .employee-list {
-            margin: 20px 0;
-        }
-
-        .employee {
-            display: inline-block;
-            padding: 10px;
-            background: #8970d4;
-            color: white;
-            border-radius: 5px;
-            cursor: grab;
-            margin: 5px;
-        }
-
-        .action-buttons {
-            margin: 20px 0;
-        }
-
-        .action-button {
-            padding: 10px 20px;
-            background: #04052e;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-
-        .action-button:hover {
-            background: #8970d4;
-        }
-
-        .table-title {
-            font-size: 1.5em;
-            color: #04052e;
-            margin-bottom: 10px;
-        }
-
-
-        .employee-tag {
-    display: inline-block;
-    padding: 4px 8px;
-    margin: 2px;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-    font-size: 0.9em;
-    transition: transform 0.2s;
-}
-
-.employee-tag:hover {
-    transform: scale(1.05);
-}
-
-.dropzone {
-    min-height: 60px;
-    transition: background-color 0.3s;
-}
-
-.dropzone.over {
-    background-color: rgba(137, 112, 212, 0.1);
-}
-
-.employee {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 16px;
-    margin: 4px;
-    border-radius: 4px;
-    cursor: grab;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    user-select: none;
-}
-
-.employee:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.employee.dragging {
-    opacity: 0.7;
-    cursor: grabbing;
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.employee-tag {
-    display: inline-flex;
-    align-items: center;
-    padding: 6px 12px;
-    margin: 2px;
-    border-radius: 4px;
-    border: 2px solid transparent;
-    font-weight: 500;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.employee-tag:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.dropzone {
-    min-height: 60px;
-    transition: all 0.2s ease-in-out;
-    border: 2px dashed transparent;
-}
-
-.dropzone.over {
-    background-color: rgba(137, 112, 212, 0.1);
-    border-color: rgba(137, 112, 212, 0.5);
-}
-
-/* Notification styles */
-.notification {
-    padding: 12px 20px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    color: white;
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.notification.success { background-color: #28a745; }
-.notification.warning { background-color: #ffc107; color: #000; }
-.notification.error { background-color: #dc3545; }
-.notification.info { background-color: #17a2b8; }
-
-#notification-container {
-    animation: slideIn 0.3s ease-out;
-}
-
-@keyframes slideIn {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
-}
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 60px;
-            }
-
-            #main-content {
-                margin-left: 60px;
-            }
-
-            .link-text {
-                display: none;
-            }
-
-            .sidebar.expanded {
-                width: 22rem;
-            }
-
-
-            .sidebar.expanded .link-text {
-                display: inline;
-            }
-
-            .sidebar.collapsed .link-text {
-            opacity: 0;
-            display: none;
-        }
-
-
-            #main-content {
-                flex-direction: column;
-                align-items: center;
-                bottom: 0;
-                right: 0;
-                margin-left: 60px;
-            }
-            #main-content.collapsed {
-            position: relative;
-            right:25rem;
-        }
-
-            .subject {
-                width: 90%;
-                margin: auto;
-            }
-        }
-
-      
-    .shift-tooltip {
-        position: absolute;
-        background: #333;
-        color: white;
-        padding: 8px 12px;
-        border-radius: 4px;
-        font-size: 14px;
-        z-index: 1000;
-        pointer-events: none;
-        animation: fadeIn 0.2s ease-in-out;
-    }
-
-    .shift-tooltip::before {
-        content: '';
-        position: absolute;
-        top: -5px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-width: 0 5px 5px;
-        border-style: solid;
-        border-color: transparent transparent #333;
-    }
-
-    .shift-tooltip.error {
-        background: #dc3545;
-    }
-
-    .shift-tooltip.warning {
-        background: #ffc107;
-        color: #000;
-    }
-
-    .dropzone.invalid-drop {
-        background-color: rgba(220, 53, 69, 0.1) !important;
-        border: 2px dashed #dc3545 !important;
-    }
-
-    .dragging {
-        opacity: 0.5;
-    }
-
-    .over {
-        background-color: rgba(137, 112, 212, 0.1);
-        border: 2px dashed #8970d4;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-/* Main layout modifications */
-.shift-manager-layout {
-    display: flex;
-    gap: 1rem;
-    padding: 1rem;
-}
-
-.employee-sidebar {
-    flex: 0 0 200px; /* Fixed width sidebar */
-    padding: 1rem;
-    background: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    max-height: 90vh;
-    position: sticky;
-    top: 1rem;
-}
-
-.tables-container {
-    flex: 1;
-    min-width: 0; /* Prevent flex item from overflowing */
-}
-
-/* Compact employee tags */
-.employee-container {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.35rem;
-    margin: 0.25rem 0;
-    background: white;
-    border-radius: 0.25rem;
-    font-size: 0.9rem;
-}
-
-.employee {
-    padding: 0.35rem 0.75rem;
-    border-radius: 0.25rem;
-    cursor: grab;
-    user-select: none;
-    white-space: nowrap;
-    font-weight: 500;
-    font-size: 0.9rem;
-}
-
-.shift-count {
-    font-size: 0.8rem;
-    padding: 0.2rem 0.5rem;
-    border-radius: 1rem;
-}
-
-/* Table modifications */
-.table-container {
-    margin-top: 1rem;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-    font-size: 0.9rem;
-}
-
-th, td {
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-}
-
-/* Employee tags in cells */
-.employee-tag {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    margin: 0.15rem;
-    border-radius: 0.25rem;
-    font-size: 0.8rem;
-    white-space: nowrap;
-}
-
-/* Make dropzones more compact */
-.dropzone {
-    min-height: 40px;
-    padding: 0.25rem;
-}
-
-/* Scrollbar styling for employee list */
-.employee-sidebar {
-    overflow-y: auto;
-    scrollbar-width: thin;
-}
-
-.employee-sidebar::-webkit-scrollbar {
-    width: 6px;
-}
-
-.employee-sidebar::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-.employee-sidebar::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 3px;
-}
-
-/* Shift count controls */
-.shift-control {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-}
-
-.shift-btn {
-    width: 1.25rem;
-    height: 1.25rem;
-    font-size: 0.8rem;
-}
-
-    </style>
 </head>
 
 <body>
-    <header>
-        <div class="header-container">
-            <img src="Images/Rapyd_Logo-Black (1).svg" style="height:40px; width:auto; position: relative; left:5rem;">
-        </div>
-    </header>
-
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <button class="toggle-btn" id="toggle-btn" onclick="toggleSidebar()">
-                <img src="Images/arrow.svg" alt="arrow">
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="images/Rapyd_Logo-White_Transparent.png" alt="Rapyd Logo" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fa-solid fa-key me-2"></i>Mapping MolPay Maintenance
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="SalaryProjection.html">
+                            <i class="fa-solid fa-hand-holding-dollar me-2"></i>Salary Projection
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="helpTools.html">
+                            <i class="fa-solid fa-link me-2"></i>Helpful Links
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="shiftsManagement.html">
+                            <i class="fa-solid fa-calendar me-2"></i>Shift Manager
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="STP.html">
+                            <i class="fa-solid fa-calendar me-2"></i>STP Information
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <nav class="nav-links">
-            <a href="index.html" >
-                <i class="fa-solid fa-key"></i>
-                <span class="link-text">Mapping MolPay Maintenance</span>
-            </a>
-            <a href="SalaryProjection.html">
-                <i class="fa-solid fa-hand-holding-dollar"></i>
-                <span class="link-text">Salary Projection</span>
-            </a>
-            <a href="helpTools.html">
-                <i class="fa-solid fa-link"></i>
-                <span class="link-text">Helpful Links</span>
-            </a>
-            <a href="shiftsManagement.html" class="active">
-                <i class="fa-solid fa-calendar"></i>
-                <span class="link-text">Shift Manager</span>
-            </a>
-            <a href="STP.html">
-                <i class="fa-solid fa-calendar"></i>
-                <span class="link-text">STP Information</span>
-            </a>
-        </nav>
-    </div>
+    </nav>
 
+    <!-- Main Content Area -->
+    <div class="container-fluid mt-4">
+        <!-- View Toggle Tabs -->
+        <ul class="nav nav-tabs mb-4" id="viewTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#dashboard-view" type="button" role="tab" aria-controls="dashboard-view" aria-selected="true">Dashboard</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="availability-tab" data-bs-toggle="tab" data-bs-target="#availability-view" type="button" role="tab" aria-controls="availability-view" aria-selected="false">Submit Availability</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="daily-tab" data-bs-toggle="tab" data-bs-target="#daily-view" type="button" role="tab" aria-controls="daily-view" aria-selected="false">Daily Schedule</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="weekly-tab" data-bs-toggle="tab" data-bs-target="#weekly-view" type="button" role="tab" aria-controls="weekly-view" aria-selected="false">Weekly Schedule</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="saved-availability-tab" data-bs-toggle="tab" data-bs-target="#saved-availability-view" type="button" role="tab" aria-controls="saved-availability-view" aria-selected="false">Availability History</button>
+            </li>
+        </ul>
 
-    <div id="main-content">
-        <h2>Employees</h2>
-        <div class="employee-list">
-            <div class="employee" draggable="true">Tomer</div>
-            <div class="employee" draggable="true">OmerK</div>
-            <div class="employee" draggable="true">OmerS</div>
-            <div class="employee" draggable="true">Ariel</div>
-            <div class="employee" draggable="true">Dor</div>
-            <div class="employee" draggable="true">Yoav</div>
-            <div class="employee" draggable="true">Ella</div>
-            <div class="employee" draggable="true">Maya</div>
-            <div class="employee" draggable="true">Natan</div>
-            <div class="employee" draggable="true">Dan</div>
-            <div class="employee" draggable="true">Alex</div>
-        </div>
+        <!-- Notification Container -->
         <div id="notification-container"></div>
-        <div class="table-container">
-            <div class="table-header">
-                <h2 class="table-title">Availability Preferences</h2>
-                <div class="action-buttons">
-                    <button class="action-button" onclick="clearAvailability()">Clear Availability</button>
-                </div>
-                <div class="shift-requirements">
-                    <button class="action-button" onclick="openRequirementsModal()">Edit Shift Requirements</button>
-                </div>
-            </div>
-            <table id="availabilityTable">
-                <thead>
-                    <tr>
-                        <th>Timeframe</th>
-                        <th>Sunday</th>
-                        <th>Monday</th>
-                        <th>Tuesday</th>
-                        <th>Wednesday</th>
-                        <th>Thursday</th>
-                        <th>Friday</th>
-                        <th>Saturday</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Morning A<br>(07:00 - 15:00)</td>
-                        <td class="dropzone availability" data-day="Sunday" data-shift="Morning A"></td>
-                        <td class="dropzone availability" data-day="Monday" data-shift="Morning A"></td>
-                        <td class="dropzone availability" data-day="Tuesday" data-shift="Morning A"></td>
-                        <td class="dropzone availability" data-day="Wednesday" data-shift="Morning A"></td>
-                        <td class="dropzone availability" data-day="Thursday" data-shift="Morning A"></td>
-                        <td class="dropzone availability" data-day="Friday" data-shift="Morning A"></td>
-                        <td class="dropzone availability" data-day="Saturday" data-shift="Morning A"></td>
-                    </tr>
-                    <tr>
-                        <td>Morning B<br>(09:00 - 17:00)</td>
-                        <td class="dropzone availability" data-day="Sunday" data-shift="Morning B"></td>
-                        <td class="dropzone availability" data-day="Monday" data-shift="Morning B"></td>
-                        <td class="dropzone availability" data-day="Tuesday" data-shift="Morning B"></td>
-                        <td class="dropzone availability" data-day="Wednesday" data-shift="Morning B"></td>
-                        <td class="dropzone availability" data-day="Thursday" data-shift="Morning B"></td>
-                        <td class="dropzone availability" data-day="Friday" data-shift="Morning B"></td>
-                        <td class="dropzone availability" data-day="Saturday" data-shift="Morning B"></td>
-                    </tr>
-                    <tr>
-                        <td>Noon<br>(15:00 - 23:00)</td>
-                        <td class="dropzone availability" data-day="Sunday" data-shift="Noon"></td>
-                        <td class="dropzone availability" data-day="Monday" data-shift="Noon"></td>
-                        <td class="dropzone availability" data-day="Tuesday" data-shift="Noon"></td>
-                        <td class="dropzone availability" data-day="Wednesday" data-shift="Noon"></td>
-                        <td class="dropzone availability" data-day="Thursday" data-shift="Noon"></td>
-                        <td class="dropzone availability" data-day="Friday" data-shift="Noon"></td>
-                        <td class="dropzone availability" data-day="Saturday" data-shift="Noon"></td>
-                    </tr>
-                    <tr>
-                        <td>Night<br>(23:00 - 07:00)</td>
-                        <td class="dropzone availability" data-day="Sunday" data-shift="Night"></td>
-                        <td class="dropzone availability" data-day="Monday" data-shift="Night"></td>
-                        <td class="dropzone availability" data-day="Tuesday" data-shift="Night"></td>
-                        <td class="dropzone availability" data-day="Wednesday" data-shift="Night"></td>
-                        <td class="dropzone availability" data-day="Thursday" data-shift="Night"></td>
-                        <td class="dropzone availability" data-day="Friday" data-shift="Night"></td>
-                        <td class="dropzone availability" data-day="Saturday" data-shift="Night"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
-        <div class="table-container">
-            <div class="table-header">
-                <h2 class="table-title">Generated Schedule</h2>
-                <div class="action-buttons">
-                    <button class="action-button" onclick="generateShifts()">Generate Schedule</button>
-                    <button class="action-button" onclick="clearSchedule()">Clear Schedule</button>
+        <!-- Tab Content -->
+        <div class="tab-content" id="viewTabContent">
+            <!-- Dashboard View -->
+            <div class="tab-pane fade show active" id="dashboard-view" role="tabpanel" aria-labelledby="dashboard-tab">
+                <div class="row">
+                    <!-- Key Stats -->
+                    <div class="col-md-12 mb-4">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="card-subtitle mb-2 text-muted">Total Employees</h6>
+                                                <h2 class="card-title" id="total-employees">11</h2>
+                                            </div>
+                                            <div class="stats-icon bg-primary">
+                                                <i class="fa-solid fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="card-subtitle mb-2 text-muted">Availability Submissions</h6>
+                                                <h2 class="card-title" id="availability-count">0</h2>
+                                            </div>
+                                            <div class="stats-icon bg-info">
+                                                <i class="fa-solid fa-clipboard-check"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="card-subtitle mb-2 text-muted">Weekly Shifts Needed</h6>
+                                                <h2 class="card-title" id="weekly-shifts">28</h2>
+                                            </div>
+                                            <div class="stats-icon bg-success">
+                                                <i class="fa-solid fa-calendar-check"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="card-subtitle mb-2 text-muted">Current Schedule Status</h6>
+                                                <h2 class="card-title" id="schedule-status">Not Generated</h2>
+                                            </div>
+                                            <div class="stats-icon bg-warning">
+                                                <i class="fa-solid fa-triangle-exclamation"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Workflow Steps -->
+                    <div class="col-md-12 mb-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">Shift Management Workflow</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="workflow-steps">
+                                    <div class="workflow-step">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">
+                                            <h5>Submit Availability</h5>
+                                            <p>Employees submit their availability preferences for the week</p>
+                                            <button class="btn btn-primary btn-sm" onclick="showTab('availability-tab')">
+                                                <i class="fa-solid fa-user-clock me-2"></i>Submit Availability
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="workflow-step">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">
+                                            <h5>Review Submissions</h5>
+                                            <p>Managers review employee availability submissions</p>
+                                            <button class="btn btn-info btn-sm" onclick="showTab('saved-availability-tab')">
+                                                <i class="fa-solid fa-clipboard-list me-2"></i>Review Submissions
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="workflow-step">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">
+                                            <h5>Generate Schedule</h5>
+                                            <p>Create a schedule based on availability and requirements</p>
+                                            <button class="btn btn-success btn-sm" id="generate-schedule-btn">
+                                                <i class="fa-solid fa-wand-magic-sparkles me-2"></i>Generate Schedule
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="workflow-step">
+                                        <div class="step-number">4</div>
+                                        <div class="step-content">
+                                            <h5>View & Export</h5>
+                                            <p>Review the final schedule in daily or weekly view</p>
+                                            <div class="btn-group">
+                                                <button class="btn btn-secondary btn-sm" onclick="showTab('daily-tab')">
+                                                    <i class="fa-solid fa-calendar-day me-2"></i>Daily View
+                                                </button>
+                                                <button class="btn btn-secondary btn-sm" onclick="showTab('weekly-tab')">
+                                                    <i class="fa-solid fa-calendar-week me-2"></i>Weekly View
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shift Requirements Section -->
+                    <div class="col-md-12 mb-4">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Shift Requirements</h5>
+                                <button class="btn btn-outline-primary btn-sm" onclick="openRequirementsModal()">
+                                    <i class="fa-solid fa-gear me-2"></i>Edit Requirements
+                                </button>
+                            </div>
+                            <div class="card-body table-responsive">
+                                <table class="table table-bordered" id="requirements-overview-table">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Timeframe</th>
+                                            <th>Sunday</th>
+                                            <th>Monday</th>
+                                            <th>Tuesday</th>
+                                            <th>Wednesday</th>
+                                            <th>Thursday</th>
+                                            <th>Friday</th>
+                                            <th>Saturday</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Morning A<br>(07:00 - 15:00)</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>21</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Morning B<br>(09:00 - 17:00)</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>14</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Noon<br>(15:00 - 23:00)</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>21</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Night<br>(23:00 - 07:00)</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>14</td>
+                                        </tr>
+                                        <tr class="table-light">
+                                            <td><strong>Total per day</strong></td>
+                                            <td>10</td>
+                                            <td>10</td>
+                                            <td>10</td>
+                                            <td>10</td>
+                                            <td>10</td>
+                                            <td>10</td>
+                                            <td>10</td>
+                                            <td>70</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <table id="scheduleTable">
-                <thead>
-                    <tr>
-                        <th>Timeframe</th>
-                        <th>Sunday</th>
-                        <th>Monday</th>
-                        <th>Tuesday</th>
-                        <th>Wednesday</th>
-                        <th>Thursday</th>
-                        <th>Friday</th>
-                        <th>Saturday</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Morning A<br>(07:00 - 15:00)</td>
-                        <td class="dropzone schedule" data-day="Sunday" data-shift="Morning A"></td>
-                        <td class="dropzone schedule" data-day="Monday" data-shift="Morning A"></td>
-                        <td class="dropzone schedule" data-day="Tuesday" data-shift="Morning A"></td>
-                        <td class="dropzone schedule" data-day="Wednesday" data-shift="Morning A"></td>
-                        <td class="dropzone schedule" data-day="Thursday" data-shift="Morning A"></td>
-                        <td class="dropzone schedule" data-day="Friday" data-shift="Morning A"></td>
-                        <td class="dropzone schedule" data-day="Saturday" data-shift="Morning A"></td>
-                    </tr>
-                    <tr>
-                        <td>Morning B<br>(09:00 - 17:00)</td>
-                        <td class="dropzone schedule" data-day="Sunday" data-shift="Morning B"></td>
-                        <td class="dropzone schedule" data-day="Monday" data-shift="Morning B"></td>
-                        <td class="dropzone schedule" data-day="Tuesday" data-shift="Morning B"></td>
-                        <td class="dropzone schedule" data-day="Wednesday" data-shift="Morning B"></td>
-                        <td class="dropzone schedule" data-day="Thursday" data-shift="Morning B"></td>
-                        <td class="dropzone schedule" data-day="Friday" data-shift="Morning B"></td>
-                        <td class="dropzone schedule" data-day="Saturday" data-shift="Morning B"></td>
-                    </tr>
-                    <tr>
-                        <td>Noon<br>(15:00 - 23:00)</td>
-                        <td class="dropzone schedule" data-day="Sunday" data-shift="Noon"></td>
-                        <td class="dropzone schedule" data-day="Monday" data-shift="Noon"></td>
-                        <td class="dropzone schedule" data-day="Tuesday" data-shift="Noon"></td>
-                        <td class="dropzone schedule" data-day="Wednesday" data-shift="Noon"></td>
-                        <td class="dropzone schedule" data-day="Thursday" data-shift="Noon"></td>
-                        <td class="dropzone schedule" data-day="Friday" data-shift="Noon"></td>
-                        <td class="dropzone schedule" data-day="Saturday" data-shift="Noon"></td>
-                    </tr>
-                    <tr>
-                        <td>Night<br>(23:00 - 07:00)</td>
-                        <td class="dropzone schedule" data-day="Sunday" data-shift="Night"></td>
-                        <td class="dropzone schedule" data-day="Monday" data-shift="Night"></td>
-                        <td class="dropzone schedule" data-day="Tuesday" data-shift="Night"></td>
-                        <td class="dropzone schedule" data-day="Wednesday" data-shift="Night"></td>
-                        <td class="dropzone schedule" data-day="Thursday" data-shift="Night"></td>
-                        <td class="dropzone schedule" data-day="Friday" data-shift="Night"></td>
-                        <td class="dropzone schedule" data-day="Saturday" data-shift="Night"></td>
-                    </tr>
-                </tbody>
-            </table>
+
+            <!-- Availability Submission View -->
+            <div class="tab-pane fade" id="availability-view" role="tabpanel" aria-labelledby="availability-tab">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Submit Your Availability</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="availability-form">
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label for="employee-name" class="form-label">Select Your Name</label>
+                                    <select class="form-select" id="employee-name" required>
+                                        <option value="" selected disabled>Choose...</option>
+                                        <option value="Tomer">Tomer</option>
+                                        <option value="OmerK">OmerK</option>
+                                        <option value="OmerS">OmerS</option>
+                                        <option value="Ariel">Ariel</option>
+                                        <option value="Dor">Dor</option>
+                                        <option value="Yoav">Yoav</option>
+                                        <option value="Ella">Ella</option>
+                                        <option value="Maya">Maya</option>
+                                        <option value="Natan">Natan</option>
+                                        <option value="Dan">Dan</option>
+                                        <option value="Alex">Alex</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="availability-week" class="form-label">Week Starting</label>
+                                    <input type="date" class="form-control" id="availability-week" required>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-info">
+                                <i class="fa-solid fa-circle-info me-2"></i>
+                                Check all shifts that you are available to work. The more options you provide, the better the schedule generation will be.
+                            </div>
+
+                            <div class="table-responsive mb-4">
+                                <table id="availability-input-table" class="table table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Timeframe</th>
+                                            <th>Sunday</th>
+                                            <th>Monday</th>
+                                            <th>Tuesday</th>
+                                            <th>Wednesday</th>
+                                            <th>Thursday</th>
+                                            <th>Friday</th>
+                                            <th>Saturday</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Morning A<br>(07:00 - 15:00)</td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Sunday" data-shift="Morning A"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Monday" data-shift="Morning A"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Tuesday" data-shift="Morning A"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Wednesday" data-shift="Morning A"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Thursday" data-shift="Morning A"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Friday" data-shift="Morning A"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Saturday" data-shift="Morning A"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Morning B<br>(09:00 - 17:00)</td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Sunday" data-shift="Morning B"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Monday" data-shift="Morning B"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Tuesday" data-shift="Morning B"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Wednesday" data-shift="Morning B"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Thursday" data-shift="Morning B"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Friday" data-shift="Morning B"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Saturday" data-shift="Morning B"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Noon<br>(15:00 - 23:00)</td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Sunday" data-shift="Noon"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Monday" data-shift="Noon"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Tuesday" data-shift="Noon"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Wednesday" data-shift="Noon"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Thursday" data-shift="Noon"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Friday" data-shift="Noon"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Saturday" data-shift="Noon"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Night<br>(23:00 - 07:00)</td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Sunday" data-shift="Night"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Monday" data-shift="Night"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Tuesday" data-shift="Night"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Wednesday" data-shift="Night"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Thursday" data-shift="Night"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Friday" data-shift="Night"></td>
+                                            <td><input type="checkbox" class="form-check-input availability-check" data-day="Saturday" data-shift="Night"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="availability-notes" style="height: 100px"></textarea>
+                                <label for="availability-notes">Additional Notes</label>
+                            </div>
+
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <button type="button" class="btn btn-outline-secondary" id="reset-availability">Reset Form</button>
+                                <button type="submit" class="btn btn-primary" id="submit-availability">Submit Availability</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Schedule View (Read Only) -->
+            <div class="tab-pane fade" id="daily-view" role="tabpanel" aria-labelledby="daily-tab">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Daily Schedule <span id="current-date" class="text-muted fs-6 ms-2"></span></h5>
+                        <div>
+                            <div class="btn-group me-2">
+                                <button class="btn btn-outline-primary btn-sm" id="prev-day">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <button class="btn btn-outline-primary btn-sm" id="next-day">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <button class="btn btn-outline-primary btn-sm" id="print-daily-btn">
+                                <i class="fa-solid fa-print me-1"></i>Print
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <div class="alert alert-warning mb-3" id="no-schedule-alert">
+                            <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                            No schedule has been generated yet. Please go to the Dashboard and generate a schedule first.
+                        </div>
+                        <table id="daily-schedule-table" class="table table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Timeframe</th>
+                                    <th>Assigned Employees</th>
+                                    <th>Required</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Morning A<br>(07:00 - 15:00)</td>
+                                    <td class="assigned-employees" data-shift="Morning A"></td>
+                                    <td class="text-center"><span class="badge bg-primary">3</span></td>
+                                    <td class="text-center"><span class="badge bg-secondary">Not Generated</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Morning B<br>(09:00 - 17:00)</td>
+                                    <td class="assigned-employees" data-shift="Morning B"></td>
+                                    <td class="text-center"><span class="badge bg-primary">2</span></td>
+                                    <td class="text-center"><span class="badge bg-secondary">Not Generated</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Noon<br>(15:00 - 23:00)</td>
+                                    <td class="assigned-employees" data-shift="Noon"></td>
+                                    <td class="text-center"><span class="badge bg-primary">3</span></td>
+                                    <td class="text-center"><span class="badge bg-secondary">Not Generated</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Night<br>(23:00 - 07:00)</td>
+                                    <td class="assigned-employees" data-shift="Night"></td>
+                                    <td class="text-center"><span class="badge bg-primary">2</span></td>
+                                    <td class="text-center"><span class="badge bg-secondary">Not Generated</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weekly Schedule View -->
+            <div class="tab-pane fade" id="weekly-view" role="tabpanel" aria-labelledby="weekly-tab">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Weekly Schedule <span id="week-range" class="text-muted fs-6 ms-2"></span></h5>
+                        <div>
+                            <div class="btn-group me-2">
+                                <button class="btn btn-outline-primary btn-sm" id="prev-week">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <button class="btn btn-outline-primary btn-sm" id="next-week">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <button class="btn btn-outline-primary btn-sm me-2" id="print-weekly-btn">
+                                <i class="fa-solid fa-print me-1"></i>Print
+                            </button>
+                            <button class="btn btn-outline-success btn-sm" id="export-schedule-btn">
+                                <i class="fa-solid fa-file-export me-1"></i>Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <div class="alert alert-warning mb-3" id="no-weekly-schedule-alert">
+                            <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                            No schedule has been generated yet. Please go to the Dashboard and generate a schedule first.
+                        </div>
+                        <table class="table table-bordered" id="weekly-schedule-table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Employee</th>
+                                    <th>Sunday</th>
+                                    <th>Monday</th>
+                                    <th>Tuesday</th>
+                                    <th>Wednesday</th>
+                                    <th>Thursday</th>
+                                    <th>Friday</th>
+                                    <th>Saturday</th>
+                                    <th>Total Hours</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Weekly view will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saved Availability View -->
+            <div class="tab-pane fade" id="saved-availability-view" role="tabpanel" aria-labelledby="saved-availability-tab">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Availability Submissions</h5>
+                        <div class="d-flex">
+                            <div class="input-group me-2" style="width: 250px;">
+                                <span class="input-group-text"><i class="fa-solid fa-filter"></i></span>
+                                <select class="form-select form-select-sm" id="availability-week-filter">
+                                    <option value="all">All Weeks</option>
+                                    <!-- Weeks will be populated by JavaScript -->
+                                </select>
+                            </div>
+                            <button class="btn btn-outline-primary btn-sm" id="export-availability-btn">
+                                <i class="fa-solid fa-file-export me-1"></i>Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info mb-3" id="no-availability-alert">
+                            <i class="fa-solid fa-circle-info me-2"></i>
+                            No availability submissions found. Employees need to submit their availability first.
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="saved-availability-table">
+                                <thead>
+                                    <tr>
+                                        <th>Employee</th>
+                                        <th>Week Starting</th>
+                                        <th>Available Shifts</th>
+                                        <th>Submitted On</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- This will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    
+    <!-- Requirements Modal -->
+    <div class="modal fade" id="requirementsModal" tabindex="-1" aria-labelledby="requirementsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="requirementsModalLabel">Edit Shift Requirements</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info mb-3">
+                        <i class="fa-solid fa-circle-info me-2"></i>
+                        Specify how many employees are needed for each shift. These values will be used when generating the schedule.
+                    </div>
+                    <form id="requirementsForm">
+                        <!-- This will be populated with inputs for each shift -->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveRequirements">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <script>// Function to generate a random color
-     
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const icon = document.getElementById('toggle-btn');
-            const mainContent = document.getElementById('main-content');
-            sidebar.classList.toggle('collapsed');
-            icon.classList.toggle('toggle-btn-collapsed')
-            mainContent.classList.toggle('collapsed');
-        }
-        </script>
+    <!-- Availability Detail Modal -->
+    <div class="modal fade" id="availabilityDetailModal" tabindex="-1" aria-labelledby="availabilityDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="availabilityDetailModalLabel">Employee Availability Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="availability-detail-table">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Timeframe</th>
+                                    <th>Sunday</th>
+                                    <th>Monday</th>
+                                    <th>Tuesday</th>
+                                    <th>Wednesday</th>
+                                    <th>Thursday</th>
+                                    <th>Friday</th>
+                                    <th>Saturday</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- This will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-3">
+                        <h6>Additional Notes:</h6>
+                        <p id="detail-notes" class="border p-2 rounded bg-light"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule Generation Modal -->
+    <div class="modal fade" id="scheduleGenerationModal" tabindex="-1" aria-labelledby="scheduleGenerationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="scheduleGenerationModalLabel">Generate Schedule</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info mb-3">
+                        <i class="fa-solid fa-circle-info me-2"></i>
+                        The schedule will be generated based on employee availability and shift requirements.
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="schedule-week" class="form-label">Week Starting</label>
+                        <input type="date" class="form-control" id="schedule-week" required>
+                    </div>
+                    
+                    <div id="availability-check-result" class="alert alert-warning d-none">
+                        <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                        <span id="availability-check-message"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success" id="confirmGenerateSchedule" disabled>Generate Schedule</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
+    <!-- Bootstrap & JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+   <!-- Bootstrap & JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Load utility classes first -->
+<script src="Utils.js"></script>
+<script src="StorageManager.js"></script>
+<!-- Then load model classes -->
+<script src="Employee.js"></script>
+<script src="RequirementsManager.js"></script>
+<script src="AvailabilityManager.js"></script>
+<script src="EmployeeManager.js"></script>
+<script src="ScheduleManager.js"></script>
+<!-- Then UI management -->
+<script src="UIManager.js"></script>
+<!-- Finally the main app file -->
+<script src="ShiftManager.js"></script>
 </body>
-
 </html>
