@@ -683,24 +683,34 @@
 <script src="ShiftManager.js"></script>
 <!-- Load the config file (will be github-config.js in production) -->
 <script>
-    // Dynamically load the config file
-    const configScript = document.createElement('script');
-    
-    // Check if we're in local development (you can adjust this check as needed)
-    const isLocalDev = window.location.hostname === 'localhost' || 
-                       window.location.hostname === '127.0.0.1';
-    
-    configScript.src = isLocalDev ? 'github-config.local.js' : 'github-config.js';
-    document.head.appendChild(configScript);
-  </script>
-  
-  <!-- Then load your application scripts (after a small delay to ensure config is loaded) -->
-  <script>
-    configScript.onload = function() {
-      const appScript = document.createElement('script');
-      appScript.src = 'github-shift-integration.js';
-      document.head.appendChild(appScript);
-    };
+    // A more reliable approach to ensure everything loads in the right order
+    document.addEventListener('DOMContentLoaded', function() {
+      // First load the config
+      const configScript = document.createElement('script');
+      const isLocalDev = window.location.hostname === 'localhost' || 
+                        window.location.hostname === '127.0.0.1';
+      configScript.src = isLocalDev ? 'github-config.local.js' : 'github-config.js';
+      
+      configScript.onload = function() {
+        // When config is loaded, load the GitHub integration
+        const gitHubScript = document.createElement('script');
+        gitHubScript.src = 'github-shift-integration.js';
+        document.head.appendChild(gitHubScript);
+        
+        // Add a manual initialization method that can be called after all scripts are loaded
+        gitHubScript.onload = function() {
+          // Check if we need to initialize manually (after a delay to ensure managers are ready)
+          setTimeout(function() {
+            if (typeof setupGitHubIntegration === 'function') {
+              setupGitHubIntegration();
+              console.log("GitHub integration initialized manually");
+            }
+          }, 1000); // Increased timeout to 1 second
+        };
+      };
+      
+      document.head.appendChild(configScript);
+    });
   </script>
 
 
