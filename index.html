@@ -681,8 +681,27 @@
 <script src="UIManager.js"></script>
 <!-- Finally the main app file -->
 <script src="ShiftManager.js"></script>
-<script src="github-config.js"></script>
-<script src="github-shift-integration.js"></script>
+<!-- Load the config file (will be github-config.js in production) -->
+<script>
+    // Dynamically load the config file
+    const configScript = document.createElement('script');
+    
+    // Check if we're in local development (you can adjust this check as needed)
+    const isLocalDev = window.location.hostname === 'localhost' || 
+                       window.location.hostname === '127.0.0.1';
+    
+    configScript.src = isLocalDev ? 'github-config.local.js' : 'github-config.js';
+    document.head.appendChild(configScript);
+  </script>
+  
+  <!-- Then load your application scripts (after a small delay to ensure config is loaded) -->
+  <script>
+    configScript.onload = function() {
+      const appScript = document.createElement('script');
+      appScript.src = 'github-shift-integration.js';
+      document.head.appendChild(appScript);
+    };
+  </script>
 
 
 </body>
