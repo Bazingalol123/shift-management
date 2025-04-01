@@ -1,0 +1,22 @@
+{
+  "timestamp": "2025-04-01T14:32:10.757Z",
+  "dateRange": {
+    "startDate": "2025-03-30",
+    "endDate": "2025-04-05",
+    "weekNumber": 14,
+    "year": 2025
+  },
+  "employee": "OmerS",
+  "notes": "",
+  "availability": {
+    "Sunday": [],
+    "Monday": [],
+    "Tuesday": [],
+    "Wednesday": [],
+    "Thursday": [
+      "Night"
+    ],
+    "Friday": [],
+    "Saturday": []
+  }
+}
