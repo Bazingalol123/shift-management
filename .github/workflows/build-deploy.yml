@@ -17,7 +17,7 @@ jobs:
           echo "const GITHUB_CONFIG = {" >> github-config.js
           echo "  TOKEN: \"${{ secrets.TOKEN_PAT }}\"," >> github-config.js
           echo "  OWNER: \"${{ github.repository_owner }}\"," >> github-config.js
-          echo "  REPO: \"${{ github.event.repository.name }}\"," >> github-config.js
+          echo "  REPO: \"shift-management\"," >> github-config.js
           echo "  BRANCH: \"main\"" >> github-config.js
           echo "};" >> github-config.js
 
