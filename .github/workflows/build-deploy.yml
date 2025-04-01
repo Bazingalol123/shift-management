@@ -2,16 +2,16 @@ name: Build and Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Create config file
+      - name: Create GitHub Config File
         run: |
           echo "// Auto-generated file - DO NOT EDIT" > github-config.js
           echo "const GITHUB_CONFIG = {" >> github-config.js
@@ -24,7 +24,9 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: .
-          branch: main
+          folder: . 
+          branch: gh-pages  # Deploy to 'gh-pages' instead of 'main'
           token: ${{ secrets.TOKEN_PAT }}
-         
+          clean: true  # Removes old files in the deployment branch
+          commit-message: "🚀 Deploying latest changes"
+
