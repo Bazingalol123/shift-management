@@ -1,7 +1,7 @@
 // Auto-generated file - DO NOT EDIT
 const GITHUB_CONFIG = {
-  TOKEN: "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",
+  TOKEN: "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",
   OWNER: "Bazingalol123",
-  REPO: "shift-management",
+  REPO: "",
   BRANCH: "main"
 };
