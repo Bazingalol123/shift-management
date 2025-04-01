@@ -17,7 +17,7 @@ jobs:
           echo "const GITHUB_CONFIG = {" >> github-config.js
           echo "  TOKEN: \"${{ secrets.TOKEN_PAT }}\"," >> github-config.js
           echo "  OWNER: \"${{ github.repository_owner }}\"," >> github-config.js
-          echo "  REPO: \"shift-management\"," >> github-config.js
+          echo "  REPO: \"$(echo ${{ github.repository }} | cut -d '/' -f 2)\"," >> github-config.js
           echo "  BRANCH: \"main\"" >> github-config.js
           echo "};" >> github-config.js
 
@@ -27,4 +27,4 @@ jobs:
           folder: .
           branch: main
           token: ${{ secrets.TOKEN_PAT }}
-          worktree: deploy-worktree # Use a unique worktree name
+         
