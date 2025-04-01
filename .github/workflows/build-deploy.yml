@@ -15,7 +15,7 @@ jobs:
         run: |
           echo "// Auto-generated file - DO NOT EDIT" > github-config.js
           echo "const GITHUB_CONFIG = {" >> github-config.js
-          echo "  TOKEN: \"${{ secrets.GITHUB_PAT }}\"," >> github-config.js
+          echo "  TOKEN: \"${{ secrets.TOKEN_PAT }}\"," >> github-config.js
           echo "  OWNER: \"${{ github.repository_owner }}\"," >> github-config.js
           echo "  REPO: \"${{ github.repository.name }}\"," >> github-config.js
           echo "  BRANCH: \"main\"" >> github-config.js
