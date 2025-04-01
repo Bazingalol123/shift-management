@@ -3,8 +3,8 @@
 
 // GitHub configuration - replace with your actual values
 const GITHUB_CONFIG = {
-    TOKEN: "your_personal_access_token", // Replace with your GitHub PAT
-    OWNER: "your-username",              // Replace with your GitHub username
+    TOKEN: "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", // Replace with your GitHub PAT
+    OWNER: "Bazingalol123",              // Replace with your GitHub username
     REPO: "shift-management",            // Repository name
     BRANCH: "main"                       // Branch name
   };
