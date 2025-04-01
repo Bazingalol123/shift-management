@@ -2,12 +2,11 @@
 // This script provides GitHub integration for the Bootstrap-based Shift Manager application
 
 // GitHub configuration - replace with your actual values
-const GITHUB_CONFIG = {
-    TOKEN: "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", // Replace with your GitHub PAT
-    OWNER: "Bazingalol123",              // Replace with your GitHub username
-    REPO: "shift-management",            // Repository name
-    BRANCH: "main"                       // Branch name
-  };
+// At the top, remove the GITHUB_CONFIG definition
+// and add a check to make sure it's available
+if (typeof GITHUB_CONFIG === 'undefined') {
+    console.error('GitHub configuration not found. Please include github-config.js');
+  }
   
   // ============= DATE UTILITIES =============
   
