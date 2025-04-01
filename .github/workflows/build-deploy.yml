@@ -21,15 +21,9 @@ jobs:
           echo "  BRANCH: \"main\"" >> github-config.js
           echo "};" >> github-config.js
 
-      # If you're using a build step (like npm build):
-      #- name: Install dependencies
-      #  run: npm ci
-      #
-      #- name: Build
-      #  run: npm run build
-
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: . # Or your build folder like "dist" if using a build step
+          folder: .
           branch: main
+          token: ${{ secrets.TOKEN_PAT }}
