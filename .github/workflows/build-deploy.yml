@@ -27,3 +27,4 @@ jobs:
           folder: .
           branch: main
           token: ${{ secrets.TOKEN_PAT }}
+          worktree: deploy-worktree # Use a unique worktree name
