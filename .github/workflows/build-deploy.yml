@@ -25,6 +25,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: .
-          branch: temp
+          branch: main
           token: ${{ secrets.TOKEN_PAT }}
           worktree: deploy-worktree # Use a unique worktree name
