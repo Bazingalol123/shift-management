@@ -1,13 +1,4 @@
-// GitHub Integration for Modern Shift Manager UI
-// This script provides GitHub integration for the Bootstrap-based Shift Manager application
 
-// GitHub configuration - replace with your actual values
-// At the top, remove the GITHUB_CONFIG definition
-// and add a check to make sure it's available
-if (typeof GITHUB_CONFIG === 'undefined') {
-    console.error('GitHub configuration not found. Please include github-config.js');
-  }
-  
   // ============= DATE UTILITIES =============
   
   // Get date information for a specified date range
