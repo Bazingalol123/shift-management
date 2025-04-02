@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-04-02T11:49:50.063Z",
+  "dateRange": {
+    "startDate": "2025-04-20",
+    "endDate": "2025-04-26",
+    "weekNumber": 17,
+    "year": 2025
+  },
+  "employee": "OmerK",
+  "notes": "Only sunday",
+  "availability": {
+    "Sunday": [
+      "Morning A",
+      "Morning B",
+      "Noon",
+      "Night"
+    ],
+    "Monday": [],
+    "Tuesday": [],
+    "Wednesday": [],
+    "Thursday": [],
+    "Friday": [
+      "Morning A",
+      "Morning B",
+      "Noon",
+      "Night"
+    ],
+    "Saturday": []
+  }
+}
