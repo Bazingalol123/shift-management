@@ -1,0 +1,37 @@
+{
+  "timestamp": "2025-04-02T21:35:32.374Z",
+  "dateRange": {
+    "startDate": "2025-04-13",
+    "endDate": "2025-04-19",
+    "weekNumber": 16,
+    "year": 2025
+  },
+  "employee": "Ella",
+  "notes": "",
+  "availability": {
+    "Sunday": [
+      "Morning B",
+      "Night"
+    ],
+    "Monday": [
+      "Noon"
+    ],
+    "Tuesday": [
+      "Morning B"
+    ],
+    "Wednesday": [
+      "Morning B",
+      "Noon"
+    ],
+    "Thursday": [
+      "Morning B",
+      "Noon",
+      "Night"
+    ],
+    "Friday": [
+      "Morning B",
+      "Noon"
+    ],
+    "Saturday": []
+  }
+}
