@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-04-01T14:40:43.041Z",
+  "timestamp": "2025-04-02T21:25:54.663Z",
   "dateRange": {
     "startDate": "2025-04-13",
     "endDate": "2025-04-19",
@@ -9,15 +9,31 @@
   "employee": "OmerK",
   "notes": "",
   "availability": {
-    "Sunday": [
+    "Sunday": [],
+    "Monday": [
+      "Night"
+    ],
+    "Tuesday": [
       "Morning A",
+      "Morning B"
+    ],
+    "Wednesday": [
+      "Morning A",
+      "Morning B",
       "Noon"
     ],
-    "Monday": [],
-    "Tuesday": [],
-    "Wednesday": [],
-    "Thursday": [],
-    "Friday": [],
-    "Saturday": []
+    "Thursday": [
+      "Morning A",
+      "Morning B",
+      "Noon",
+      "Night"
+    ],
+    "Friday": [
+      "Noon"
+    ],
+    "Saturday": [
+      "Morning A",
+      "Noon"
+    ]
   }
 }
