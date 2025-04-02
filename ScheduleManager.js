@@ -85,6 +85,10 @@ class ScheduleManager {
             return null;
         }
         
+        // Log the data source being used
+        const submissions = availabilityManager.getWeekSubmissions(weekStarting);
+        console.log(`Generating schedule using ${submissions.length} availability submissions for week starting ${weekStarting}`);
+        
         // Save the current week
         this.currentWeek = weekStarting;
         
@@ -100,7 +104,6 @@ class ScheduleManager {
         
         return this.#schedule;
     }
-    
     // Load schedule from storage
     loadSchedule() {
         const savedData = this.#storageManager.loadData('SCHEDULE');
