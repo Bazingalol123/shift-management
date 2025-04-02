@@ -1,0 +1,37 @@
+{
+  "timestamp": "2025-04-02T21:29:06.018Z",
+  "dateRange": {
+    "startDate": "2025-05-11",
+    "endDate": "2025-05-17",
+    "weekNumber": 20,
+    "year": 2025
+  },
+  "employee": "Tomer",
+  "notes": "",
+  "availability": {
+    "Sunday": [
+      "Night"
+    ],
+    "Monday": [
+      "Noon",
+      "Night"
+    ],
+    "Tuesday": [
+      "Morning A",
+      "Morning B"
+    ],
+    "Wednesday": [
+      "Morning A",
+      "Morning B",
+      "Noon"
+    ],
+    "Thursday": [
+      "Morning A",
+      "Morning B"
+    ],
+    "Friday": [],
+    "Saturday": [
+      "Night"
+    ]
+  }
+}
