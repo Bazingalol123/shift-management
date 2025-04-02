@@ -1,0 +1,43 @@
+{
+  "timestamp": "2025-04-02T21:26:18.505Z",
+  "dateRange": {
+    "startDate": "2025-04-13",
+    "endDate": "2025-04-19",
+    "weekNumber": 16,
+    "year": 2025
+  },
+  "employee": "Ariel",
+  "notes": "",
+  "availability": {
+    "Sunday": [
+      "Morning A"
+    ],
+    "Monday": [
+      "Morning A",
+      "Noon",
+      "Night"
+    ],
+    "Tuesday": [
+      "Morning A",
+      "Morning B",
+      "Noon",
+      "Night"
+    ],
+    "Wednesday": [],
+    "Thursday": [
+      "Morning A",
+      "Morning B",
+      "Noon",
+      "Night"
+    ],
+    "Friday": [
+      "Morning A",
+      "Morning B",
+      "Noon"
+    ],
+    "Saturday": [
+      "Morning A",
+      "Noon"
+    ]
+  }
+}
