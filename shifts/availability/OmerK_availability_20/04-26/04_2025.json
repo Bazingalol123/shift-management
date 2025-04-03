@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-04-02T11:50:14.999Z",
+  "timestamp": "2025-04-03T00:39:13.220Z",
   "dateRange": {
     "startDate": "2025-04-20",
     "endDate": "2025-04-26",
@@ -7,23 +7,31 @@
     "year": 2025
   },
   "employee": "OmerK",
-  "notes": "Only sunday",
+  "notes": "",
   "availability": {
     "Sunday": [
       "Morning A",
       "Morning B",
-      "Noon",
-      "Night"
+      "Noon"
     ],
-    "Monday": [],
-    "Tuesday": [],
-    "Wednesday": [],
-    "Thursday": [],
-    "Friday": [
+    "Monday": [
+      "Morning A",
+      "Morning B"
+    ],
+    "Tuesday": [
       "Morning A",
       "Morning B",
-      "Noon",
-      "Night"
+      "Noon"
+    ],
+    "Wednesday": [],
+    "Thursday": [
+      "Morning A",
+      "Morning B",
+      "Noon"
+    ],
+    "Friday": [
+      "Morning B",
+      "Noon"
     ],
     "Saturday": []
   }
