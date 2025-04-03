@@ -1,0 +1,40 @@
+{
+  "timestamp": "2025-04-03T00:44:05.968Z",
+  "dateRange": {
+    "startDate": "2025-04-20",
+    "endDate": "2025-04-26",
+    "weekNumber": 17,
+    "year": 2025
+  },
+  "employee": "Maya",
+  "notes": "",
+  "availability": {
+    "Sunday": [
+      "Morning A",
+      "Morning B"
+    ],
+    "Monday": [
+      "Noon",
+      "Night"
+    ],
+    "Tuesday": [
+      "Noon",
+      "Night"
+    ],
+    "Wednesday": [
+      "Morning B",
+      "Noon"
+    ],
+    "Thursday": [
+      "Morning A",
+      "Morning B"
+    ],
+    "Friday": [
+      "Morning B",
+      "Noon"
+    ],
+    "Saturday": [
+      "Noon"
+    ]
+  }
+}
