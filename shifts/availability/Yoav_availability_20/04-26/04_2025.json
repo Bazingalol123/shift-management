@@ -1,0 +1,38 @@
+{
+  "timestamp": "2025-04-03T00:43:11.881Z",
+  "dateRange": {
+    "startDate": "2025-04-20",
+    "endDate": "2025-04-26",
+    "weekNumber": 17,
+    "year": 2025
+  },
+  "employee": "Yoav",
+  "notes": "",
+  "availability": {
+    "Sunday": [
+      "Morning A",
+      "Morning B",
+      "Noon",
+      "Night"
+    ],
+    "Monday": [
+      "Morning A",
+      "Morning B"
+    ],
+    "Tuesday": [
+      "Morning A",
+      "Morning B",
+      "Noon"
+    ],
+    "Wednesday": [],
+    "Thursday": [],
+    "Friday": [
+      "Morning A",
+      "Night"
+    ],
+    "Saturday": [
+      "Morning A",
+      "Night"
+    ]
+  }
+}
