@@ -1,0 +1,36 @@
+{
+  "timestamp": "2025-04-03T00:41:50.983Z",
+  "dateRange": {
+    "startDate": "2025-04-20",
+    "endDate": "2025-04-26",
+    "weekNumber": 17,
+    "year": 2025
+  },
+  "employee": "Dor",
+  "notes": "",
+  "availability": {
+    "Sunday": [
+      "Morning A",
+      "Morning B"
+    ],
+    "Monday": [
+      "Morning A",
+      "Morning B"
+    ],
+    "Tuesday": [
+      "Noon"
+    ],
+    "Wednesday": [
+      "Morning A",
+      "Morning B",
+      "Noon"
+    ],
+    "Thursday": [
+      "Morning A"
+    ],
+    "Friday": [],
+    "Saturday": [
+      "Night"
+    ]
+  }
+}
