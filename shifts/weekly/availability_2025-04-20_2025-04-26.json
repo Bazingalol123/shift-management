@@ -1,7 +1,7 @@
 {
   "weekStart": "2025-04-20",
   "weekEnd": "2025-04-26",
-  "lastUpdated": "2025-04-03T00:44:06.821Z",
+  "lastUpdated": "2025-04-04T11:14:51.118Z",
   "submissions": [
     {
       "employee": "Tomer",
@@ -190,6 +190,22 @@
         "Saturday": [
           "Noon"
         ]
+      }
+    },
+    {
+      "employee": "Dan",
+      "submittedOn": "2025-04-04T11:14:51.118Z",
+      "notes": "",
+      "availableShifts": {
+        "Sunday": [],
+        "Monday": [],
+        "Tuesday": [
+          "Morning A"
+        ],
+        "Wednesday": [],
+        "Thursday": [],
+        "Friday": [],
+        "Saturday": []
       }
     }
   ]
