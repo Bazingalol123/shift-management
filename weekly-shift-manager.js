@@ -652,8 +652,8 @@ function showWeeklyFileManagementModal() {
             
             <div class="mb-3">
               <label for="weekly-file-week" class="form-label">Week</label>
-              <input type="date" class="form-control" id="weekly-file-week" required>
-            </div>
+              <input type="dropdown" class="form-control" id="weekly-file-week" required>
+              </div>
             
             <div id="weekly-file-status" class="alert d-none">
               <!-- Status will be shown here -->

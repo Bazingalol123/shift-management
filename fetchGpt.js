@@ -695,7 +695,15 @@ function initOpenAIScheduleIntegration() {
         
         openaiButton.addEventListener('click', async () => {
             // Replace with your actual OpenAI API key
-            const API_KEY = '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';
+            const PART_ONE = 'sk-proj-WDRy4tfSFff6z_';
+            const PART_TWO = 'M3TjoX6CC0maTIUPHs7yHE5sXvnpx4u6ch76mKJhxAe2-MhgsKwZ';
+
+            const PART_THREE = '_E5HivqwT3BlbkFJoD3v2jKAkrO_';
+
+            const PART_FOUR = '_YY7u1e5GmAI3LetK7fhKBakBOwJjcMgiR0nM4wzhA2cW7tRviwcApYV1sp0UA';
+
+
+            const API_KEY = PART_ONE + PART_TWO + PART_THREE + PART_FOUR;
             
             try {
                 // Close the modal

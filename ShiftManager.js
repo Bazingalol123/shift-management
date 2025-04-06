@@ -96,10 +96,10 @@ function initializeMockData() {
         const mockRequirements = {};
         DAYS.forEach(day => {
             mockRequirements[day] = {
-                'Morning A': 3,
+                'Morning A': 1,
                 'Morning B': 2,
-                'Noon': 3,
-                'Night': 2
+                'Noon': 1,
+                'Night': 1
             };
         });
         

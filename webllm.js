@@ -254,134 +254,236 @@ class WebLLMScheduler {
     }
   }
   
-  // Display the generated schedule in a modal
-  function displayGeneratedSchedule(generatedSchedule) {
-    // Get the schedule from the response
-    const schedule = generatedSchedule.schedule;
+ // Display the generated schedule in a modal
+function displayGeneratedSchedule(generatedScheduleResponse) {
+  // Parse the response string if it's provided as a string
+  let generatedSchedule;
+  if (typeof generatedScheduleResponse === 'string') {
+      try {
+          generatedSchedule = JSON.parse(generatedScheduleResponse);
+      } catch (error) {
+          console.error('Error parsing schedule response:', error);
+          Utils.showNotification('Error parsing schedule response', 'error');
+          return;
+      }
+  } else {
+      generatedSchedule = generatedScheduleResponse;
+  }
 
-    // Create a container for the schedule display
-    const scheduleContainer = document.createElement('div');
-    scheduleContainer.className = 'generated-schedule-container';
-    scheduleContainer.innerHTML = '<h2>Generated Schedule</h2>';
-
-    // Create a table to display the schedule
-    const table = document.createElement('table');
-    table.className = 'table table-bordered table-striped';
-
-    // Create table header
-    const thead = document.createElement('thead');
-    thead.innerHTML = `
-        <tr>
-            <th>Day</th>
-            <th>Morning A</th>
-            <th>Morning B</th>
-            <th>Noon</th>
-            <th>Night</th>
-        </tr>
-    `;
-    table.appendChild(thead);
-
-    // Create table body
-    const tbody = document.createElement('tbody');
-
-    // Days of the week in order
-    const days = [
-        'Sunday', 'Monday', 'Tuesday', 'Wednesday', 
-        'Thursday', 'Friday', 'Saturday'
-    ];
-
-    // Populate table rows
-    days.forEach(day => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${day}</td>
-            <td>${schedule[day]['Morning A'].join(', ') || '-'}</td>
-            <td>${schedule[day]['Morning B'].join(', ') || '-'}</td>
-            <td>${schedule[day]['Noon'].join(', ') || '-'}</td>
-            <td>${schedule[day]['Night'].join(', ') || '-'}</td>
-        `;
-        tbody.appendChild(row);
-    });
-
-    table.appendChild(tbody);
-    scheduleContainer.appendChild(table);
-
-    // Optional: Calculate and display shift counts per employee
-    const shiftCounts = calculateShiftCounts(schedule);
-    const shiftCountsContainer = document.createElement('div');
-    shiftCountsContainer.className = 'shift-counts-container';
-    shiftCountsContainer.innerHTML = '<h3>Shift Counts</h3>';
-
-    const shiftCountsTable = document.createElement('table');
-    shiftCountsTable.className = 'table table-sm';
-
-    const shiftCountsHeader = document.createElement('thead');
-    shiftCountsHeader.innerHTML = `
-        <tr>
-            <th>Employee</th>
-            <th>Total Shifts</th>
-        </tr>
-    `;
-    shiftCountsTable.appendChild(shiftCountsHeader);
-
-    const shiftCountsBody = document.createElement('tbody');
-    Object.entries(shiftCounts)
-        .sort((a, b) => b[1] - a[1])
-        .forEach(([employee, count]) => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${employee}</td>
-                <td>${count}</td>
-            `;
-            shiftCountsBody.appendChild(row);
-        });
-
-    shiftCountsTable.appendChild(shiftCountsBody);
-    shiftCountsContainer.appendChild(shiftCountsTable);
-
-    // Clear previous content and add new schedule
-    const modalBody = document.querySelector('#scheduleGenerationModal .modal-body');
-    if (modalBody) {
-        modalBody.innerHTML = '';
-        modalBody.appendChild(scheduleContainer);
-        modalBody.appendChild(shiftCountsContainer);
-    }
-
-    // Optionally, show the modal
-    const modal = bootstrap.Modal.getInstance(document.getElementById('scheduleGenerationModal'));
-    if (modal) modal.show();
-}
-
-// Helper function to calculate shift counts
-function calculateShiftCounts(schedule) {
-    const shiftCounts = {};
-
-    // Iterate through each day
-    Object.values(schedule).forEach(daySchedule => {
-        // Iterate through each shift type
-        Object.values(daySchedule).forEach(shiftEmployees => {
-            shiftEmployees.forEach(employee => {
-                shiftCounts[employee] = (shiftCounts[employee] || 0) + 1;
-            });
-        });
-    });
-
-    return shiftCounts;
-}
-
-// Export for potential external use
-window.displayGeneratedSchedule = displayGeneratedSchedule;
-  
-  // Apply the generated schedule to the app
-  function applyGeneratedSchedule(scheduleData) {
-    if (!window.ShiftApp || !window.ShiftApp.shiftManager) {
-      Utils.showNotification('Application is not properly initialized', 'error');
+  // Get the schedule from the response
+  const schedule = generatedSchedule.schedule;
+  if (!schedule) {
+      console.error('No schedule found in response');
+      Utils.showNotification('Invalid schedule format', 'error');
       return;
-    }
-    
-    try {
-      // Get the week starting date
-      const weekStarting = scheduleData.weekStart;
+  }
+
+  // Create a container for the schedule display
+  const scheduleContainer = document.createElement('div');
+  scheduleContainer.className = 'generated-schedule-container';
+  scheduleContainer.innerHTML = '<h3 class="mb-3">Generated Schedule</h3>';
+
+  // Create a table to display the schedule
+  const table = document.createElement('table');
+  table.className = 'table table-bordered table-striped';
+
+  // Create table header
+  const thead = document.createElement('thead');
+  thead.innerHTML = `
+      <tr>
+          <th>Day</th>
+          <th>Morning A</th>
+          <th>Morning B</th>
+          <th>Noon</th>
+          <th>Night</th>
+      </tr>
+  `;
+  table.appendChild(thead);
+
+  // Create table body
+  const tbody = document.createElement('tbody');
+
+  // Days of the week in order
+  const days = [
+      'Sunday', 'Monday', 'Tuesday', 'Wednesday', 
+      'Thursday', 'Friday', 'Saturday'
+  ];
+
+  // Populate table rows
+  days.forEach(day => {
+      const row = document.createElement('tr');
+      row.innerHTML = `<td><strong>${day}</strong></td>`;
+      
+      // Add cells for each shift type
+      ['Morning A', 'Morning B', 'Noon', 'Night'].forEach(shift => {
+          const cell = document.createElement('td');
+          
+          // Handle the mixed format of string or array values
+          const employees = schedule[day][shift];
+          
+          if (Array.isArray(employees)) {
+              // Handle array of employees
+              const assignedEmployees = employees.filter(emp => emp && emp.trim() !== '');
+              
+              if (assignedEmployees.length > 0) {
+                  cell.innerHTML = assignedEmployees.join('<br>');
+              } else {
+                  cell.innerHTML = '<span class="text-muted">-</span>';
+              }
+          } else if (employees && employees.trim() !== '') {
+              // Handle single employee as string
+              cell.textContent = employees;
+          } else {
+              cell.innerHTML = '<span class="text-muted">-</span>';
+          }
+          
+          row.appendChild(cell);
+      });
+      
+      tbody.appendChild(row);
+  });
+
+  table.appendChild(tbody);
+  scheduleContainer.appendChild(table);
+
+  // Calculate and display shift counts per employee
+  const shiftCounts = calculateShiftCounts(schedule);
+  
+  // Only show shift counts if there are any
+  if (Object.keys(shiftCounts).length > 0) {
+      const shiftCountsContainer = document.createElement('div');
+      shiftCountsContainer.className = 'shift-counts-container mt-4';
+      shiftCountsContainer.innerHTML = '<h4>Shift Distribution</h4>';
+      
+      const shiftCountsTable = document.createElement('table');
+      shiftCountsTable.className = 'table table-sm table-bordered';
+      
+      const shiftCountsHeader = document.createElement('thead');
+      shiftCountsHeader.innerHTML = `
+          <tr>
+              <th>Employee</th>
+              <th>Total Shifts</th>
+          </tr>
+      `;
+      shiftCountsTable.appendChild(shiftCountsHeader);
+      
+      const shiftCountsBody = document.createElement('tbody');
+      Object.entries(shiftCounts)
+          .sort((a, b) => b[1] - a[1])
+          .forEach(([employee, count]) => {
+              const row = document.createElement('tr');
+              row.innerHTML = `
+                  <td>${employee}</td>
+                  <td class="text-center">${count}</td>
+              `;
+              shiftCountsBody.appendChild(row);
+          });
+      
+      shiftCountsTable.appendChild(shiftCountsBody);
+      shiftCountsContainer.appendChild(shiftCountsTable);
+      scheduleContainer.appendChild(shiftCountsContainer);
+  }
+
+  // Add buttons for scheduling actions
+  const buttonContainer = document.createElement('div');
+  buttonContainer.className = 'mt-4 d-flex justify-content-end';
+  
+  const applyButton = document.createElement('button');
+  applyButton.className = 'btn btn-success me-2';
+  applyButton.innerHTML = '<i class="fa-solid fa-check me-2"></i>Apply Schedule';
+  applyButton.onclick = () => applyGeneratedSchedule(generatedSchedule);
+  
+  const dismissButton = document.createElement('button');
+  dismissButton.className = 'btn btn-secondary';
+  dismissButton.innerHTML = 'Dismiss';
+  dismissButton.onclick = () => {
+      const modal = bootstrap.Modal.getInstance(document.getElementById('aiScheduleModal'));
+      if (modal) modal.hide();
+  };
+  
+  buttonContainer.appendChild(applyButton);
+  buttonContainer.appendChild(dismissButton);
+  scheduleContainer.appendChild(buttonContainer);
+
+  // Show in a modal
+  showScheduleModal(scheduleContainer);
+}
+
+// Helper function to calculate shift counts from the mixed format schedule
+function calculateShiftCounts(schedule) {
+  const shiftCounts = {};
+
+  // Iterate through each day
+  Object.values(schedule).forEach(daySchedule => {
+      // Iterate through each shift type
+      Object.entries(daySchedule).forEach(([shiftType, employees]) => {
+          // Handle both string and array formats
+          if (Array.isArray(employees)) {
+              employees.forEach(employee => {
+                  if (employee && employee.trim() !== '') {
+                      shiftCounts[employee] = (shiftCounts[employee] || 0) + 1;
+                  }
+              });
+          } else if (employees && employees.trim() !== '') {
+              shiftCounts[employees] = (shiftCounts[employees] || 0) + 1;
+          }
+      });
+  });
+
+  return shiftCounts;
+}
+
+function showScheduleModal(content) {
+  // Look for existing modal or create new one
+  let modal = document.getElementById('aiScheduleModal');
+  
+  if (!modal) {
+      modal = document.createElement('div');
+      modal.className = 'modal fade';
+      modal.id = 'aiScheduleModal';
+      modal.setAttribute('tabindex', '-1');
+      modal.setAttribute('aria-labelledby', 'aiScheduleModalLabel');
+      modal.setAttribute('aria-hidden', 'true');
+      
+      modal.innerHTML = `
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="aiScheduleModalLabel">AI Generated Schedule</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <!-- Content will be injected here -->
+                  </div>
+              </div>
+          </div>
+      `;
+      
+      document.body.appendChild(modal);
+  }
+  
+  // Update modal content
+  const modalBody = modal.querySelector('.modal-body');
+  modalBody.innerHTML = '';
+  modalBody.appendChild(content);
+  
+  // Show the modal
+  const bsModal = new bootstrap.Modal(modal);
+  bsModal.show();
+}
+
+// Function to apply the generated schedule to the app
+function applyGeneratedSchedule(scheduleData) {
+  try {
+      // Check if app is initialized
+      if (!window.ShiftApp || !window.ShiftApp.shiftManager) {
+          Utils.showNotification('Application not properly initialized', 'error');
+          return;
+      }
+      
+      // Get the current week or use current date
+      const weekStarting = window.ShiftApp.shiftManager.currentWeek || 
+                          Utils.formatDateForInput(Utils.getWeekStartDate(new Date()));
       
       // Set the current week
       window.ShiftApp.shiftManager.currentWeek = weekStarting;
@@ -393,20 +495,32 @@ window.displayGeneratedSchedule = displayGeneratedSchedule;
       const schedule = scheduleData.schedule;
       const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
       
-      // Convert to the app's format and assign employees
+      // Assign employees
       days.forEach(day => {
-        if (schedule[day]) {
-          Object.entries(schedule[day]).forEach(([shift, employees]) => {
-            employees.forEach(empName => {
-              try {
-                const employee = window.ShiftApp.employeeManager.getEmployee(empName);
-                employee.assignShift(day, shift);
-              } catch (error) {
-                console.warn(`Failed to assign ${shift} to ${empName} on ${day}: ${error.message}`);
-              }
-            });
-          });
-        }
+          if (schedule[day]) {
+              Object.entries(schedule[day]).forEach(([shift, employees]) => {
+                  // Handle both string and array formats
+                  if (Array.isArray(employees)) {
+                      employees.forEach(empName => {
+                          if (empName && empName.trim() !== '') {
+                              try {
+                                  const employee = window.ShiftApp.employeeManager.getEmployee(empName);
+                                  employee.assignShift(day, shift);
+                              } catch (error) {
+                                  console.warn(`Failed to assign ${shift} to ${empName}: ${error.message}`);
+                              }
+                          }
+                      });
+                  } else if (employees && employees.trim() !== '') {
+                      try {
+                          const employee = window.ShiftApp.employeeManager.getEmployee(employees);
+                          employee.assignShift(day, shift);
+                      } catch (error) {
+                          console.warn(`Failed to assign ${shift} to ${employees}: ${error.message}`);
+                      }
+                  }
+              });
+          }
       });
       
       // Save the schedule
@@ -414,21 +528,31 @@ window.displayGeneratedSchedule = displayGeneratedSchedule;
       
       // Update UI components
       if (window.ShiftApp.uiManager) {
-        window.ShiftApp.uiManager.updateDailyScheduleView();
-        window.ShiftApp.uiManager.updateWeeklyScheduleView();
-        window.ShiftApp.uiManager.updateDashboardStats();
-        window.ShiftApp.uiManager.updateScheduleVisibility();
+          window.ShiftApp.uiManager.updateDailyScheduleView();
+          window.ShiftApp.uiManager.updateWeeklyScheduleView();
+          window.ShiftApp.uiManager.updateDashboardStats();
+          window.ShiftApp.uiManager.updateScheduleVisibility();
       }
       
-      Utils.showNotification('LLM-generated schedule applied successfully', 'success');
+      // Hide the modal
+      const modal = bootstrap.Modal.getInstance(document.getElementById('aiScheduleModal'));
+      if (modal) modal.hide();
+      
+      // Show success notification
+      Utils.showNotification('AI schedule applied successfully', 'success');
       
       // Switch to daily view tab
       showTab('daily-tab');
-    } catch (error) {
-      console.error('Error applying schedule:', error);
+      
+  } catch (error) {
+      console.error('Error applying generated schedule:', error);
       Utils.showNotification(`Failed to apply schedule: ${error.message}`, 'error');
-    }
   }
+}
+
+// Export for use in other modules
+window.displayGeneratedSchedule = displayGeneratedSchedule;
+window.applyGeneratedSchedule = applyGeneratedSchedule;
   
   // Prepare availability data from the application
   function prepareAvailabilityData() {
