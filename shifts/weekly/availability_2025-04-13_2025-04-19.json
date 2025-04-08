@@ -1,7 +1,7 @@
 {
   "weekStart": "2025-04-20",
   "weekEnd": "2025-04-26",
-  "lastUpdated": "2025-04-08T08:06:30.332Z",
+  "lastUpdated": "2025-04-08T08:07:07.371Z",
   "submissions": [
     {
       "employee": "Tomer",
@@ -158,41 +158,20 @@
     },
     {
       "employee": "Dor",
-      "submittedOn": "2025-04-02T16:45:22Z",
-      "notes": "Prefer not to work more than 3 shifts this week",
+      "submittedOn": "2025-04-08T08:07:07.371Z",
+      "notes": "",
       "availableShifts": {
         "Sunday": [
+          "Morning A",
           "Morning B",
           "Noon"
         ],
-        "Monday": [
-          "Morning A",
-          "Night",
-          "Noon"
-        ],
-        "Tuesday": [
-          "Noon",
-          "Morning B"
-        ],
-        "Wednesday": [
-          "Morning B",
-          "Noon",
-          "Night"
-        ],
-        "Thursday": [
-          "Morning A",
-          "Noon"
-        ],
-        "Friday": [
-          "Morning A",
-          "Noon",
-          "Night"
-        ],
-        "Saturday": [
-          "Noon",
-          "Night",
-          "Morning B"
-        ]
+        "Monday": [],
+        "Tuesday": [],
+        "Wednesday": [],
+        "Thursday": [],
+        "Friday": [],
+        "Saturday": []
       }
     },
     {
