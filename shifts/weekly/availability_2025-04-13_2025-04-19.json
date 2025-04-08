@@ -1,161 +1,419 @@
 {
-    "weekStart": "2025-04-20",
-    "weekEnd": "2025-04-26",
-    "lastUpdated": "2025-04-01T21:48:09.056Z",
-    "submissions": [
-        {
-            "employee": "Tomer",
-            "submittedOn": "2025-04-02T10:15:30Z",
-            "notes": "Looking for around 3-4 shifts this week. Prefer morning shifts but flexible.",
-            "availableShifts": {
-                "Sunday": ["Morning A", "Noon", "Morning B"],
-                "Monday": ["Morning B", "Noon"],
-                "Tuesday": ["Morning A", "Night", "Noon"],
-                "Wednesday": ["Noon", "Morning B"],
-                "Thursday": ["Morning B", "Night", "Noon"],
-                "Friday": ["Morning A", "Noon"],
-                "Saturday": ["Morning A", "Noon", "Night"]
-            }
-        },
-        {
-            "employee": "OmerK",
-            "submittedOn": "2025-04-01T14:40:43Z",
-            "notes": "Need at least 2 shifts this week for financial reasons",
-            "availableShifts": {
-                "Sunday": ["Morning A", "Noon", "Morning B"],
-                "Monday": ["Morning A", "Noon"],
-                "Tuesday": ["Morning B", "Noon"],
-                "Wednesday": ["Morning B", "Noon", "Night"],
-                "Thursday": ["Morning A", "Noon"],
-                "Friday": ["Noon", "Night", "Morning B"],
-                "Saturday": ["Morning A", "Morning B", "Noon"]
-            }
-        },
-        {
-            "employee": "OmerS",
-            "submittedOn": "2025-04-01T14:32:10Z",
-            "notes": "",
-            "availableShifts": {
-                "Sunday": ["Morning B", "Noon"],
-                "Monday": ["Morning A", "Morning B", "Noon"],
-                "Tuesday": ["Noon", "Night"],
-                "Wednesday": ["Morning A", "Noon"],
-                "Thursday": ["Night", "Morning B"],
-                "Friday": ["Noon", "Morning A"],
-                "Saturday": ["Morning B", "Noon"]
-            }
-        },
-        {
-            "employee": "Ariel",
-            "submittedOn": "2025-04-03T09:22:15Z",
-            "notes": "Completely open to any shifts. Happy to help cover gaps.",
-            "availableShifts": {
-                "Sunday": ["Night", "Morning A"],
-                "Monday": ["Noon", "Morning B"],
-                "Tuesday": ["Morning B", "Noon", "Night"],
-                "Wednesday": ["Night", "Morning A", "Noon"],
-                "Thursday": ["Morning A", "Noon"],
-                "Friday": ["Morning B", "Noon", "Night"],
-                "Saturday": ["Night", "Morning A", "Noon"]
-            }
-        },
-        {
-            "employee": "Dor",
-            "submittedOn": "2025-04-02T16:45:22Z",
-            "notes": "Prefer not to work more than 3 shifts this week",
-            "availableShifts": {
-                "Sunday": ["Morning B", "Noon"],
-                "Monday": ["Morning A", "Night", "Noon"],
-                "Tuesday": ["Noon", "Morning B"],
-                "Wednesday": ["Morning B", "Noon", "Night"],
-                "Thursday": ["Morning A", "Noon"],
-                "Friday": ["Morning A", "Noon", "Night"],
-                "Saturday": ["Noon", "Night", "Morning B"]
-            }
-        },
-        {
-            "employee": "Yoav",
-            "submittedOn": "2025-04-01T20:33:47Z",
-            "notes": "",
-            "availableShifts": {
-                "Sunday": ["Morning A", "Noon"],
-                "Monday": ["Noon", "Morning B"],
-                "Tuesday": ["Morning B", "Night"],
-                "Wednesday": ["Night", "Morning A"],
-                "Thursday": ["Morning A", "Noon"],
-                "Friday": ["Noon", "Morning B"],
-                "Saturday": ["Morning B", "Night", "Noon"]
-            }
-        },
-        {
-            "employee": "Ella",
-            "submittedOn": "2025-04-02T11:54:36Z",
-            "notes": "Would love to work only 1-2 shifts this week if possible",
-            "availableShifts": {
-                "Sunday": ["Noon", "Morning B"],
-                "Monday": ["Morning B", "Night", "Noon"],
-                "Tuesday": ["Morning A", "Noon"],
-                "Wednesday": ["Noon", "Morning B"],
-                "Thursday": ["Morning B", "Noon"],
-                "Friday": ["Night", "Noon"],
-                "Saturday": ["Morning A", "Morning B"]
-            }
-        },
-        {
-            "employee": "Maya",
-            "submittedOn": "2025-04-03T07:19:54Z",
-            "notes": "Can work up to 4 shifts this week",
-            "availableShifts": {
-                "Sunday": ["Morning B", "Noon", "Morning A"],
-                "Monday": ["Morning A", "Noon"],
-                "Tuesday": ["Night", "Morning B"],
-                "Wednesday": ["Morning A", "Noon", "Morning B"],
-                "Thursday": ["Noon", "Morning A"],
-                "Friday": ["Morning B", "Noon"],
-                "Saturday": ["Morning B", "Night", "Noon"]
-            }
-        },
-        {
-            "employee": "Natan",
-            "submittedOn": "2025-04-01T18:22:11Z",
-            "notes": "",
-            "availableShifts": {
-                "Sunday": ["Morning B"],
-                "Monday": ["Noon", "Morning A"],
-                "Tuesday": ["Morning A", "Noon"],
-                "Wednesday": ["Morning B", "Noon"],
-                "Thursday": ["Noon", "Morning A"],
-                "Friday": ["Morning A", "Night", "Noon"],
-                "Saturday": ["Noon", "Morning B"]
-            }
-        },
-        {
-            "employee": "Dan",
-            "submittedOn": "2025-04-02T15:40:29Z",
-            "notes": "Willing to take night shifts if needed",
-            "availableShifts": {
-                "Sunday": ["Morning A", "Night", "Noon"],
-                "Monday": ["Noon", "Morning B"],
-                "Tuesday": ["Morning B", "Noon"],
-                "Wednesday": ["Morning A", "Noon"],
-                "Thursday": ["Night", "Morning A"],
-                "Friday": ["Noon", "Night"],
-                "Saturday": ["Morning B"]
-            }
-        },
-        {
-            "employee": "Alex",
-            "submittedOn": "2025-04-01T11:12:27Z",
-            "notes": "Looking for about 3 shifts this week",
-            "availableShifts": {
-                "Sunday": ["Morning A", "Morning B", "Noon", "Night"],
-                "Monday": ["Morning A", "Morning B"],
-                "Tuesday": ["Noon", "Morning B"],
-                "Wednesday": ["Morning A", "Noon"],
-                "Thursday": ["Morning B", "Noon"],
-                "Friday": ["Morning A", "Night"],
-                "Saturday": ["Morning B", "Noon"]
-            }
-        }
-    ]
+  "weekStart": "2025-04-20",
+  "weekEnd": "2025-04-26",
+  "lastUpdated": "2025-04-08T08:00:27.862Z",
+  "submissions": [
+    {
+      "employee": "Tomer",
+      "submittedOn": "2025-04-02T10:15:30Z",
+      "notes": "Looking for around 3-4 shifts this week. Prefer morning shifts but flexible.",
+      "availableShifts": {
+        "Sunday": [
+          "Morning A",
+          "Noon",
+          "Morning B"
+        ],
+        "Monday": [
+          "Morning B",
+          "Noon"
+        ],
+        "Tuesday": [
+          "Morning A",
+          "Night",
+          "Noon"
+        ],
+        "Wednesday": [
+          "Noon",
+          "Morning B"
+        ],
+        "Thursday": [
+          "Morning B",
+          "Night",
+          "Noon"
+        ],
+        "Friday": [
+          "Morning A",
+          "Noon"
+        ],
+        "Saturday": [
+          "Morning A",
+          "Noon",
+          "Night"
+        ]
+      }
+    },
+    {
+      "employee": "OmerK",
+      "submittedOn": "2025-04-01T14:40:43Z",
+      "notes": "Need at least 2 shifts this week for financial reasons",
+      "availableShifts": {
+        "Sunday": [
+          "Morning A",
+          "Noon",
+          "Morning B"
+        ],
+        "Monday": [
+          "Morning A",
+          "Noon"
+        ],
+        "Tuesday": [
+          "Morning B",
+          "Noon"
+        ],
+        "Wednesday": [
+          "Morning B",
+          "Noon",
+          "Night"
+        ],
+        "Thursday": [
+          "Morning A",
+          "Noon"
+        ],
+        "Friday": [
+          "Noon",
+          "Night",
+          "Morning B"
+        ],
+        "Saturday": [
+          "Morning A",
+          "Morning B",
+          "Noon"
+        ]
+      }
+    },
+    {
+      "employee": "OmerS",
+      "submittedOn": "2025-04-01T14:32:10Z",
+      "notes": "",
+      "availableShifts": {
+        "Sunday": [
+          "Morning B",
+          "Noon"
+        ],
+        "Monday": [
+          "Morning A",
+          "Morning B",
+          "Noon"
+        ],
+        "Tuesday": [
+          "Noon",
+          "Night"
+        ],
+        "Wednesday": [
+          "Morning A",
+          "Noon"
+        ],
+        "Thursday": [
+          "Night",
+          "Morning B"
+        ],
+        "Friday": [
+          "Noon",
+          "Morning A"
+        ],
+        "Saturday": [
+          "Morning B",
+          "Noon"
+        ]
+      }
+    },
+    {
+      "employee": "Ariel",
+      "submittedOn": "2025-04-03T09:22:15Z",
+      "notes": "Completely open to any shifts. Happy to help cover gaps.",
+      "availableShifts": {
+        "Sunday": [
+          "Night",
+          "Morning A"
+        ],
+        "Monday": [
+          "Noon",
+          "Morning B"
+        ],
+        "Tuesday": [
+          "Morning B",
+          "Noon",
+          "Night"
+        ],
+        "Wednesday": [
+          "Night",
+          "Morning A",
+          "Noon"
+        ],
+        "Thursday": [
+          "Morning A",
+          "Noon"
+        ],
+        "Friday": [
+          "Morning B",
+          "Noon",
+          "Night"
+        ],
+        "Saturday": [
+          "Night",
+          "Morning A",
+          "Noon"
+        ]
+      }
+    },
+    {
+      "employee": "Dor",
+      "submittedOn": "2025-04-02T16:45:22Z",
+      "notes": "Prefer not to work more than 3 shifts this week",
+      "availableShifts": {
+        "Sunday": [
+          "Morning B",
+          "Noon"
+        ],
+        "Monday": [
+          "Morning A",
+          "Night",
+          "Noon"
+        ],
+        "Tuesday": [
+          "Noon",
+          "Morning B"
+        ],
+        "Wednesday": [
+          "Morning B",
+          "Noon",
+          "Night"
+        ],
+        "Thursday": [
+          "Morning A",
+          "Noon"
+        ],
+        "Friday": [
+          "Morning A",
+          "Noon",
+          "Night"
+        ],
+        "Saturday": [
+          "Noon",
+          "Night",
+          "Morning B"
+        ]
+      }
+    },
+    {
+      "employee": "Yoav",
+      "submittedOn": "2025-04-01T20:33:47Z",
+      "notes": "",
+      "availableShifts": {
+        "Sunday": [
+          "Morning A",
+          "Noon"
+        ],
+        "Monday": [
+          "Noon",
+          "Morning B"
+        ],
+        "Tuesday": [
+          "Morning B",
+          "Night"
+        ],
+        "Wednesday": [
+          "Night",
+          "Morning A"
+        ],
+        "Thursday": [
+          "Morning A",
+          "Noon"
+        ],
+        "Friday": [
+          "Noon",
+          "Morning B"
+        ],
+        "Saturday": [
+          "Morning B",
+          "Night",
+          "Noon"
+        ]
+      }
+    },
+    {
+      "employee": "Ella",
+      "submittedOn": "2025-04-02T11:54:36Z",
+      "notes": "Would love to work only 1-2 shifts this week if possible",
+      "availableShifts": {
+        "Sunday": [
+          "Noon",
+          "Morning B"
+        ],
+        "Monday": [
+          "Morning B",
+          "Night",
+          "Noon"
+        ],
+        "Tuesday": [
+          "Morning A",
+          "Noon"
+        ],
+        "Wednesday": [
+          "Noon",
+          "Morning B"
+        ],
+        "Thursday": [
+          "Morning B",
+          "Noon"
+        ],
+        "Friday": [
+          "Night",
+          "Noon"
+        ],
+        "Saturday": [
+          "Morning A",
+          "Morning B"
+        ]
+      }
+    },
+    {
+      "employee": "Maya",
+      "submittedOn": "2025-04-03T07:19:54Z",
+      "notes": "Can work up to 4 shifts this week",
+      "availableShifts": {
+        "Sunday": [
+          "Morning B",
+          "Noon",
+          "Morning A"
+        ],
+        "Monday": [
+          "Morning A",
+          "Noon"
+        ],
+        "Tuesday": [
+          "Night",
+          "Morning B"
+        ],
+        "Wednesday": [
+          "Morning A",
+          "Noon",
+          "Morning B"
+        ],
+        "Thursday": [
+          "Noon",
+          "Morning A"
+        ],
+        "Friday": [
+          "Morning B",
+          "Noon"
+        ],
+        "Saturday": [
+          "Morning B",
+          "Night",
+          "Noon"
+        ]
+      }
+    },
+    {
+      "employee": "Natan",
+      "submittedOn": "2025-04-01T18:22:11Z",
+      "notes": "",
+      "availableShifts": {
+        "Sunday": [
+          "Morning B"
+        ],
+        "Monday": [
+          "Noon",
+          "Morning A"
+        ],
+        "Tuesday": [
+          "Morning A",
+          "Noon"
+        ],
+        "Wednesday": [
+          "Morning B",
+          "Noon"
+        ],
+        "Thursday": [
+          "Noon",
+          "Morning A"
+        ],
+        "Friday": [
+          "Morning A",
+          "Night",
+          "Noon"
+        ],
+        "Saturday": [
+          "Noon",
+          "Morning B"
+        ]
+      }
+    },
+    {
+      "employee": "Dan",
+      "submittedOn": "2025-04-02T15:40:29Z",
+      "notes": "Willing to take night shifts if needed",
+      "availableShifts": {
+        "Sunday": [
+          "Morning A",
+          "Night",
+          "Noon"
+        ],
+        "Monday": [
+          "Noon",
+          "Morning B"
+        ],
+        "Tuesday": [
+          "Morning B",
+          "Noon"
+        ],
+        "Wednesday": [
+          "Morning A",
+          "Noon"
+        ],
+        "Thursday": [
+          "Night",
+          "Morning A"
+        ],
+        "Friday": [
+          "Noon",
+          "Night"
+        ],
+        "Saturday": [
+          "Morning B"
+        ]
+      }
+    },
+    {
+      "employee": "Alex",
+      "submittedOn": "2025-04-08T08:00:27.861Z",
+      "notes": "",
+      "availableShifts": {
+        "Sunday": [],
+        "Monday": [
+          "Morning A",
+          "Morning B",
+          "Noon"
+        ],
+        "Tuesday": [
+          "Morning A",
+          "Morning B",
+          "Noon"
+        ],
+        "Wednesday": [
+          "Morning A",
+          "Morning B",
+          "Noon"
+        ],
+        "Thursday": [
+          "Morning A",
+          "Morning B",
+          "Noon",
+          "Night"
+        ],
+        "Friday": [
+          "Morning A",
+          "Morning B",
+          "Noon",
+          "Night"
+        ],
+        "Saturday": [
+          "Morning A",
+          "Noon",
+          "Night"
+        ]
+      }
+    }
+  ]
 }
