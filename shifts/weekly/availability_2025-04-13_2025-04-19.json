@@ -1,7 +1,7 @@
 {
   "weekStart": "2025-04-20",
   "weekEnd": "2025-04-26",
-  "lastUpdated": "2025-04-08T09:06:29.090Z",
+  "lastUpdated": "2025-04-08T09:07:15.734Z",
   "submissions": [
     {
       "employee": "Tomer",
@@ -239,40 +239,32 @@
     },
     {
       "employee": "Maya",
-      "submittedOn": "2025-04-03T07:19:54Z",
-      "notes": "Can work up to 4 shifts this week",
+      "submittedOn": "2025-04-08T09:07:15.734Z",
+      "notes": "",
       "availableShifts": {
-        "Sunday": [
-          "Morning B",
-          "Noon",
-          "Morning A"
-        ],
+        "Sunday": [],
         "Monday": [
           "Morning A",
+          "Morning B",
           "Noon"
         ],
         "Tuesday": [
-          "Night",
-          "Morning B"
+          "Night"
         ],
         "Wednesday": [
-          "Morning A",
           "Noon",
-          "Morning B"
+          "Night"
         ],
         "Thursday": [
+          "Morning B",
           "Noon",
-          "Morning A"
+          "Night"
         ],
         "Friday": [
-          "Morning B",
-          "Noon"
+          "Morning A",
+          "Morning B"
         ],
-        "Saturday": [
-          "Morning B",
-          "Night",
-          "Noon"
-        ]
+        "Saturday": []
       }
     },
     {
