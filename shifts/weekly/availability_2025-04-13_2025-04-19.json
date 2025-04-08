@@ -1,7 +1,7 @@
 {
   "weekStart": "2025-04-20",
   "weekEnd": "2025-04-26",
-  "lastUpdated": "2025-04-08T08:07:07.371Z",
+  "lastUpdated": "2025-04-08T08:08:00.075Z",
   "submissions": [
     {
       "employee": "Tomer",
@@ -391,6 +391,38 @@
           "Morning A",
           "Noon",
           "Night"
+        ]
+      }
+    },
+    {
+      "employee": "Elinor",
+      "submittedOn": "2025-04-08T08:08:00.074Z",
+      "notes": "",
+      "availableShifts": {
+        "Sunday": [],
+        "Monday": [],
+        "Tuesday": [
+          "Morning A",
+          "Morning B",
+          "Noon",
+          "Night"
+        ],
+        "Wednesday": [
+          "Morning A",
+          "Morning B",
+          "Noon",
+          "Night"
+        ],
+        "Thursday": [
+          "Morning A",
+          "Morning B",
+          "Noon",
+          "Night"
+        ],
+        "Friday": [],
+        "Saturday": [
+          "Morning A",
+          "Noon"
         ]
       }
     }
