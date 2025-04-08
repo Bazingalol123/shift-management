@@ -1,7 +1,7 @@
 {
   "weekStart": "2025-04-20",
   "weekEnd": "2025-04-26",
-  "lastUpdated": "2025-04-08T08:00:27.862Z",
+  "lastUpdated": "2025-04-08T08:06:30.332Z",
   "submissions": [
     {
       "employee": "Tomer",
@@ -342,36 +342,36 @@
     },
     {
       "employee": "Dan",
-      "submittedOn": "2025-04-02T15:40:29Z",
-      "notes": "Willing to take night shifts if needed",
+      "submittedOn": "2025-04-08T08:06:30.332Z",
+      "notes": "",
       "availableShifts": {
         "Sunday": [
-          "Morning A",
-          "Night",
-          "Noon"
+          "Night"
         ],
         "Monday": [
-          "Noon",
-          "Morning B"
-        ],
-        "Tuesday": [
-          "Morning B",
-          "Noon"
-        ],
-        "Wednesday": [
           "Morning A",
-          "Noon"
-        ],
-        "Thursday": [
-          "Night",
-          "Morning A"
-        ],
-        "Friday": [
+          "Morning B",
           "Noon",
           "Night"
         ],
+        "Tuesday": [
+          "Morning A",
+          "Morning B",
+          "Noon"
+        ],
+        "Wednesday": [],
+        "Thursday": [
+          "Morning A",
+          "Morning B",
+          "Noon",
+          "Night"
+        ],
+        "Friday": [
+          "Night"
+        ],
         "Saturday": [
-          "Morning B"
+          "Morning A",
+          "Noon"
         ]
       }
     },
